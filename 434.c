@@ -34,3 +34,25 @@ int countSegments(char* s) {
     }
     return count;
 }
+// Leetcode 代码 
+int countSegments(char* s) {
+    int count = 0, start = 0, stop = 0;
+    char *p = s;
+
+    do{
+// 这个if esleif 保证了有一个字母同时后面跟上的是空格 这个方法十分厉害 同时解决了很多问题 包括了连续空格的问题
+        if((*p != ' ') && *p != '\0') {
+            start = 1;
+        }else if(start == 1){
+            stop = 1;
+        }
+        if(start == 1 && stop == 1){
+            count++;
+            start = 0;
+            stop = 0;
+        }
+
+    }while(*p++);
+    return count;
+}
+
